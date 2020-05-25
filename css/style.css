@@ -1,0 +1,133 @@
+html,body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: sans-serif;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    cursor: pointer;
+    
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+}
+
+[v-cloak] {
+    display: none;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    text-align: center;
+}
+
+#abjad {
+    width: 100%;
+    font-size: 70vmin;
+    transform: translateY(-70%);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+}
+
+#abjad.garis-bantu:before,
+#abjad.garis-bantu:after {
+    content: '';
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+#abjad.garis-bantu:before {
+    top: 34%;
+}
+
+#abjad.garis-bantu:after {
+    top: 80%;
+}
+
+#button-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background: #eee;
+    padding: 30px 0;
+}
+
+#button-container img{
+    width: 30px;
+    margin: 0 15px;
+    vertical-align: middle;
+}
+
+button#install {
+    display: inline-block;
+    border: 1px solid #666;
+    background: transparent;
+    padding: 10px;
+    border-radius: 3px;
+    outline: 0;
+    position: fixed;
+    bottom: 25px;
+    right: 10px;
+}
+
+.popup {
+    max-width: 400px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: left;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9;
+    background: #fcfcfc;
+    line-height: 25px;
+}
+
+.info {
+    font-size: 1.7em;
+    display: block;
+    border: 1px solid #666;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    line-height: 1.5em;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 9;
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+#setting {
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9;
+}

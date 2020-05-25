@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Abjad">
+    <meta name="apple-mobile-web-app-title" content="Abjad">
+    <meta name="theme-color" content="#d47de8cc">
+    <meta name="msapplication-navbutton-color" content="#d47de8cc">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" sizes="192x192" href="img/logo.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="img/logo.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Abjad</title>
+</head>
+<body>
+    <div id="app">
+        <div id="info-container">
+            <span class="info" @click="open_info">i</span>
+            <div id="info-detail" class="popup" v-if="show_info" v-cloak>
+                <p>Aplikasi ini bertujuan untuk membantu mengenalkan huruf kepada anak.</p>
+                <p>Cara memakainya tinggal tap di bagian huruf, dan nanti akan muncul huruf secara acak. Kemudian anak bisa ditanya huruf apa yang muncul. Lalu si anak bisa di minta untuk tap tombol suara untuk memastikan jawabannya.</p>
+                <p>Dibuat oleh Ahmad Hajar <a href="mailto:mail@ahmadhajar.com">mail@ahmadhajar.com</a></p>
+                
+                <span class="close" @click="close_info">&#10005;</span>
+            </div>
+        </div>
+        <div id="setting-container">
+            <span id="setting" @click="open_setting">
+                <img src="img/settings.png">
+            </span>
+            <div id="setting-content" class="popup" v-if="show_setting" v-cloak>
+                <h4>Settings</h4>
+                <p>
+                    <label><input type="checkbox" v-model="mode.uppercase" /> Huruf besar</label>
+                </p>
+                <p>
+                    <label><input type="checkbox" v-model="mode.lowercase" /> Huruf kecil</label>
+                </p>
+                <p>
+                    <label><input type="checkbox" v-model="mode.digit" /> Angka</label>
+                </p>
+                <p>
+                    <label><input type="checkbox" @change="set_color" v-model="mode.color" /> Mode warna</label>
+                </p>
+                <p>
+                    <label><input type="checkbox" v-model="mode.help_line" /> Garis bantu</label>
+                </p>
+
+                <span class="close" @click="close_setting">&#10005;</span>
+            </div>
+        </div>
+        <div id="abjad" :class="{'garis-bantu': mode.help_line}" @click="refresh" v-cloak>{{ abjad }}</div>
+        <div id="button-container" @click="play">
+            <img src="img/sound.png" id="sound">
+        </div>
+        <button @click="install" id="install" v-if="!is_installed">Install app ini</button>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

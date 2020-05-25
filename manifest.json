@@ -1,0 +1,21 @@
+{
+  "name": "Abjad",
+  "short_name": "Abjad",
+  "description": "Game untuk pengenalan huruf abjad",
+  "lang": "id-ID",
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "theme_color": "#d47de8cc",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "192x192"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "img/screenshot.png",
+      "sizes": "448x799"
+    }
+  ]
+}
