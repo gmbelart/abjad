@@ -1,22 +1,34 @@
-let preCacheName = 'abjad-v1.1.0';
+let preCacheName = 'abjad-v1.1.4';
 let staticContentToCache = [
   '/',
   '/index.html',
   '/js/vue.js',
   '/js/app.js',
   '/css/style.css',
+  '/img/logo-512.png',
   '/img/logo.png',
   '/img/refresh.png',
   '/img/screenshot.png',
-  '/img/sound.png'
+  '/img/settings.png',
+  '/img/sound.png',
+  '/img/splashscreens/iphone5_splash.png',
+  '/img/splashscreens/iphone6_splash.png',
+  '/img/splashscreens/iphoneplus_splash.png',
+  '/img/splashscreens/iphonex_splash.png',
+  '/img/splashscreens/iphonexr_splash.png',
+  '/img/splashscreens/iphonexsmax_splash.png',
+  '/img/splashscreens/ipad_splash.png',
+  '/img/splashscreens/ipadpro1_splash.png',
+  '/img/splashscreens/ipadpro3_splash.png',
+  '/img/splashscreens/ipadpro2_splash.png'
 ];
-let lang = ["id"];
+let langs = ["id"];
 let soundFiles = [];
 
-lang.forEach(l => {
-    for (var i = 65; i++; i<=90){
+langs.forEach(lang => {
+    for (var i = 65; i <= 90; i++){
         char = String.fromCharCode(i);
-        soundFiles.push(`./${i}/sound/${char}.mp3`);
+        soundFiles.push(`/sound/${lang}/${char}.mp3`);
     }
 });
 
@@ -45,16 +57,14 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-    if(e.request.url.startsWith(self.location.origin)) {
-        e.respondWith(
-            caches.match(e.request).then((r) => {
-                return r || fetch(e.request).then((response) => {
-                    return caches.open(preCacheName).then((cache) => {
-                        cache.put(e.request, response.clone());
-                        return response;
-                    });
+    e.respondWith(
+        caches.match(e.request.url).then((r) => {
+            return r || fetch(e.request.url).then((response) => {
+                return caches.open(preCacheName).then((cache) => {
+                    cache.put(e.request.url, response.clone());
+                    return response;
                 });
-            })
-        );
-    }
+            });
+        })
+    );
 });
